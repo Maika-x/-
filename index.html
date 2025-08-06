@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>剣道スコアかきかきクン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Sans JP', sans-serif;
+        background-color: #f8f6f2; /* Washi background color */
+      }
+      .font-title {
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+      }
+      .scoresheet-grid {
+        display: grid;
+        grid-template-columns: auto 1fr auto 1fr;
+        border: 1px solid #d1d5db; /* gray-300 */
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+      .scoresheet-grid > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+        border-bottom: 1px solid #d1d5db; /* gray-300 */
+        border-right: 1px solid #d1d5db; /* gray-300 */
+        text-align: center;
+      }
+      .scoresheet-grid > div:last-child,
+      .scoresheet-grid > div:nth-child(4n) {
+        border-right: 0;
+      }
+       /* Remove bottom border from last row */
+      .scoresheet-grid > div:nth-last-child(-n+4) {
+        border-bottom: 0;
+      }
+      .fusen-loss::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          linear-gradient(to top right, transparent calc(50% - 1px), #1f2937 calc(50% - 1px), #1f2937 calc(50% + 1px), transparent calc(50% + 1px)),
+          linear-gradient(to top left, transparent calc(50% - 1px), #1f2937 calc(50% - 1px), #1f2937 calc(50% + 1px), transparent calc(50% + 1px));
+        background-repeat: no-repeat;
+        z-index: 1;
+        pointer-events: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "@google/genai": "https://esm.sh/@google/genai@^1.12.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-gray-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
